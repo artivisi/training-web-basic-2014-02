@@ -12,6 +12,22 @@
     <bean id="c" class="com.artivisi.belajar.ioc.Customer">
         <property name="nama" value="Dadang"></property>
         <property name="email" value="dadang@artivisi.com"></property>
+        <property name="rumah" ref="rumah"/>
+        <property name="kantor" ref="kantor"/>
+    </bean>
+    
+    <bean id="kantor" class="com.artivisi.belajar.ioc.Alamat">
+        <property name="jalan" value="Jl. Sudirman"/>
+        <property name="nomer" value="100"/>
+        <property name="kota" value="Jakarta Pusat"/>
+        <property name="provinsi" value="DKI Jakarta"/>
+    </bean>
+    
+    <bean id="rumah" class="com.artivisi.belajar.ioc.Alamat">
+        <property name="jalan" value="Jl. Jatiwaringin"/>
+        <property name="nomer" value="100"/>
+        <property name="kota" value="Jakarta Timur"/>
+        <property name="provinsi" value="DKI Jakarta"/>
     </bean>
     
 </beans>

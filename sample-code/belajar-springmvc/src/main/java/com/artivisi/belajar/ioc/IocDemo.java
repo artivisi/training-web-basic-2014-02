@@ -14,5 +14,7 @@ public class IocDemo {
         // tampilkan
         System.out.println("Nama : "+c.getNama());
         System.out.println("Email : "+c.getEmail());
+        System.out.println("Alamat Rumah : "+c.getRumah().getJalan());
+        System.out.println("Alamat Kantor : "+c.getKantor().getJalan());
     }
 }
