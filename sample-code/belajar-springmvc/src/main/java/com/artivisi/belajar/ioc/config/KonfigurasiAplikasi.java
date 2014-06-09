@@ -4,10 +4,18 @@ import com.artivisi.belajar.ioc.Alamat;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan(basePackages = "com.artivisi.belajar.ioc")
+@PropertySource("classpath:customer.properties")
 public class KonfigurasiAplikasi {
+    
+    @Bean
+    public PropertySourcesPlaceholderConfigurer configureProperties(){
+        return new PropertySourcesPlaceholderConfigurer();
+    }
     
     @Bean(name = "k")
     public Alamat alamatKantor(){

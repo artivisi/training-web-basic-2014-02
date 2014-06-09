@@ -2,13 +2,17 @@ package com.artivisi.belajar.ioc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 // annotation yang diproses oleh Spring: @Controller, @Service, @Repository, @Component
 @Component(value = "c")
 public class Customer {
-    private String nama = "endy";
-    private String email = "endy@artivisi.com";
+    
+    @Value("${nama}")
+    private String nama;
+    @Value("${email}")
+    private String email;
     
     @Autowired @Qualifier("k")
     private Alamat kantor;
