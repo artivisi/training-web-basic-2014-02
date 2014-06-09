@@ -1,8 +1,12 @@
 package com.artivisi.belajar.ioc;
 
+import org.springframework.stereotype.Component;
+
+// annotation yang diproses oleh Spring: @Controller, @Service, @Repository, @Component
+@Component(value = "c")
 public class Customer {
-    private String nama;
-    private String email;
+    private String nama = "endy";
+    private String email = "endy@artivisi.com";
     
     private Alamat kantor;
     private Alamat rumah;
