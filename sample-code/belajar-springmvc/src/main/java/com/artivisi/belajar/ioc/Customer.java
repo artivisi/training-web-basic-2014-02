@@ -1,5 +1,7 @@
 package com.artivisi.belajar.ioc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 // annotation yang diproses oleh Spring: @Controller, @Service, @Repository, @Component
@@ -8,7 +10,10 @@ public class Customer {
     private String nama = "endy";
     private String email = "endy@artivisi.com";
     
+    @Autowired @Qualifier("k")
     private Alamat kantor;
+    
+    @Autowired @Qualifier("r")
     private Alamat rumah;
 
     public String getNama() {

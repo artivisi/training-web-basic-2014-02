@@ -24,14 +24,14 @@
     </bean>
     -->
     
-    <bean id="kantor" class="com.artivisi.belajar.ioc.Alamat">
+    <bean id="k" class="com.artivisi.belajar.ioc.Alamat">
         <property name="jalan" value="Jl. Sudirman"/>
         <property name="nomer" value="100"/>
         <property name="kota" value="Jakarta Pusat"/>
         <property name="provinsi" value="DKI Jakarta"/>
     </bean>
     
-    <bean id="rumah" class="com.artivisi.belajar.ioc.Alamat">
+    <bean id="r" class="com.artivisi.belajar.ioc.Alamat">
         <property name="jalan" value="Jl. Jatiwaringin"/>
         <property name="nomer" value="100"/>
         <property name="kota" value="Jakarta Timur"/>
