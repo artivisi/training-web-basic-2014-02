@@ -13,12 +13,12 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 public class KonfigurasiAplikasi {
     
     @Bean
-    public PropertySourcesPlaceholderConfigurer configureProperties(){
+    public static PropertySourcesPlaceholderConfigurer configureProperties(){
         return new PropertySourcesPlaceholderConfigurer();
     }
     
     @Bean(name = "k")
-    public Alamat alamatKantor(){
+    public static Alamat alamatKantor(){
         Alamat a = new Alamat();
         a.setJalan("Jl. Gatot Subroto");
         a.setNomer("321");
@@ -28,7 +28,7 @@ public class KonfigurasiAplikasi {
     }
     
     @Bean(name = "r")
-    public Alamat alamatRumah(){
+    public static Alamat alamatRumah(){
         Alamat a = new Alamat();
         a.setJalan("Jl. Sudirman");
         a.setNomer("123");
