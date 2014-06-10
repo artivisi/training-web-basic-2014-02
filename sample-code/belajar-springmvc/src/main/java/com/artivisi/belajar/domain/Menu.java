@@ -16,17 +16,19 @@ import org.hibernate.annotations.GenericGenerator;
 public class Menu {
 	@Id @GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+        @Column(name = "menu_id")
 	private String menuId;
 	
-	@Column(nullable=false, length=100)
+	@Column(name="menu_name", nullable=false, length=100)
 	private String menuName;
 	
-	@Column(length=300)
+	@Column(name="menu_description", length=300)
 	private String menuDescription;
 	
-	@Column(nullable=false)
+	@Column(name="create_by", nullable=false)
 	private String createBy;
 	
+        @Column(name = "create_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 }
