@@ -9,6 +9,9 @@ public class AopDemo {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:aop.xml");
         Customer c = (Customer) ctx.getBean("c");
         
+        c.setNama("endy");
+        c.setEmail("endy.muhardin@gmail.com");
+        
         System.out.println("Nama : "+c.getNama());
         System.out.println("Email : "+c.getEmail());
     }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 // annotation yang diproses oleh Spring: @Controller, @Service, @Repository, @Component
-@Component(value = "c")
+@Component(value = "customerAsli")
 public class Customer {
     
     @Value("${nama}")
