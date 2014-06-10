@@ -12,22 +12,24 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity @Table(name="m_news")
 public class News {
-    @Id @GeneratedValue(generator = "system-uuid")
+
+
+	@Id @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String news_id;
     
-    @Column(nullable = false, unique = false)
-    private Date news_date;
+    @Column(nullable = false, unique = false, name = "news_date")
+    private Date newsDate;
     
-    @Column(nullable = false, unique = true)
-    private String news_code;
+    @Column(nullable = false, unique = true, name = "news_code")
+    private String newsCode;
     
-    @Column(nullable = false, unique = false)
-    private String news_desc;
+    @Column(nullable = false, unique = false, name = "news_desc")
+    private String newsDesc;
     
-    @Column(nullable = false, unique = false)
-    private String news_createuser;
+    @Column(nullable = false, unique = false,name = "news_createuser")
+    private String newsCreateUser;
     
-    @Column(nullable = false, unique = false)
-    private Date news_createdate;
+    @Column(nullable = false, unique = false,name = "news_createdate")
+    private Date newsCreateDate;
 }

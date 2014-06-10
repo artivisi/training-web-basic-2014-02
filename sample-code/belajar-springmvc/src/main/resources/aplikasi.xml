@@ -11,6 +11,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
+    <context:component-scan base-package="com.artivisi.belajar" />
     
     <!-- konfigurasi database -->
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
@@ -27,7 +28,7 @@
         <property name="hibernateProperties">
             <value>
                 hibernate.dialect=${hibernate.dialect}
-                hibernate.hbm2ddl.auto=update
+                hibernate.hbm2ddl.auto=create
                 hibernate.show_sql=true
                 hibernate.format_sql=true
             </value>
