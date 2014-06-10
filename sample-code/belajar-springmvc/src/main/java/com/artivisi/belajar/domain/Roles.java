@@ -1,5 +1,6 @@
 package com.artivisi.belajar.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,9 +12,12 @@ import org.hibernate.annotations.GenericGenerator;
 public class Roles {
 
 	 @Id @GeneratedValue(generator = "system-uuid")
-	    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	 private String roles_id;
+	 @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	 @Column(name="roles_id")
+	 private String rolesId;
 	
-	
+	 @Column(nullable = false, unique = true, name="role_name")	 
+	 private String roleName;	 
+	 
 	
 }
