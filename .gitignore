@@ -7,3 +7,4 @@ jdbc.properties
 # Eclipse Ignore
 .classpath
 .settings
+.project
