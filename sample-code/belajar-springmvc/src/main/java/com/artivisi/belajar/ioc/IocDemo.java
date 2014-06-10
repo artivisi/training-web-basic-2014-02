@@ -9,7 +9,7 @@ public class IocDemo {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:ioc.xml");
         
         // ambil object dari spring container
-        Customer c = (Customer) ctx.getBean("c");
+        Customer c = (Customer) ctx.getBean(Customer.class);
         
         // tampilkan
         System.out.println("Nama : "+c.getNama());
