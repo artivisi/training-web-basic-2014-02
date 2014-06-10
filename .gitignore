@@ -3,3 +3,7 @@ target
 
 # Konfigurasi masing-masing
 jdbc.properties
+
+# Eclipse Ignore
+.classpath
+.settings
