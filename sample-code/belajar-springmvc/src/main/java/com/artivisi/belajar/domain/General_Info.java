@@ -10,12 +10,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity @Table(name="m_general_info")
 
-public class GENERAL_INFO {
+public class General_Info {
 	@Id @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private String info_id;
+    private String infoId;
 	
 	@Column(nullable = false)
-    private String info_name;
-	private String info_link;
+    private String infoName;
+	
+	@Column(nullable = false)
+	private String infoLink;
 }
