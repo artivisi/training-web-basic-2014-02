@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,8 +18,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
     
-    @Column(nullable = false)
-    private String password;
+    @OneToOne(mappedBy = "user")
+    private UserPassword password;
+    
     private String fullname;
     
     @Column(nullable = false, unique = true)
@@ -40,14 +42,6 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getFullname() {
         return fullname;
     }
@@ -63,6 +57,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public UserPassword getPassword() {
+        return password;
+    }
+
+    public void setPassword(UserPassword password) {
+        this.password = password;
+    }
     
 }
