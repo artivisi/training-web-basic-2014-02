@@ -1,12 +1,17 @@
 package com.artivisi.belajar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -32,6 +37,14 @@ public class User {
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserActivity> daftarActivity = new ArrayList<UserActivity>();
+    
+    @ManyToMany
+         @JoinTable(
+                 name = "m_user_roles",
+                 joinColumns = @JoinColumn(name = "user_id"),
+                 inverseJoinColumns = @JoinColumn(name = "roles_id")
+         )
+	private Set<Roles> daftarRole = new HashSet<Roles>();
 
     public String getId() {
         return id;
