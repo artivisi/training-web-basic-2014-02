@@ -1,3 +1,5 @@
 # Maven Ignore
 target
 
+# Konfigurasi masing-masing
+jdbc.properties
