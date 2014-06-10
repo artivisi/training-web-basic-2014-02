@@ -1,4 +1,4 @@
-package com.artivisi.belajar.ioc.config;
+package com.artivisi.belajar.config;
 
 import com.artivisi.belajar.ioc.Alamat;
 import org.springframework.context.annotation.Bean;

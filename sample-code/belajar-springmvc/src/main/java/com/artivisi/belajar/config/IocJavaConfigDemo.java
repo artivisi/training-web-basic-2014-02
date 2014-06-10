@@ -1,4 +1,4 @@
-package com.artivisi.belajar.ioc.config;
+package com.artivisi.belajar.config;
 
 import com.artivisi.belajar.ioc.Customer;
 import org.springframework.context.ApplicationContext;
