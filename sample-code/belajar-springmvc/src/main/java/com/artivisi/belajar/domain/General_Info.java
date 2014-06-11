@@ -20,4 +20,28 @@ public class General_Info {
 	
 	@Column(nullable = false)
 	private String infoLink;
+
+	public String getInfoId() {
+		return infoId;
+	}
+
+	public void setInfoId(String infoId) {
+		this.infoId = infoId;
+	}
+
+	public String getInfoName() {
+		return infoName;
+	}
+
+	public void setInfoName(String infoName) {
+		this.infoName = infoName;
+	}
+
+	public String getInfoLink() {
+		return infoLink;
+	}
+
+	public void setInfoLink(String infoLink) {
+		this.infoLink = infoLink;
+	}
 }
