@@ -29,7 +29,7 @@ public class UserActivityDao {
 	@SuppressWarnings("unchecked")
 	public List<UserActivity> cariSemuaActivity(Integer start, Integer rows){
 		return sessionFactory.getCurrentSession()
-				.createQuery("select u from UserActivity u order by u.activity")
+				.createQuery("select u from UserActivity u order by u.activityId")
 				.setFirstResult(start)
 				.setMaxResults(rows)
 				.list();

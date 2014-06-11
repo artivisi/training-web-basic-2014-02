@@ -28,5 +28,7 @@ insert into m_general_info (infoid,infoname,infolink) values ('dadang', 'dadang'
 insert into m_general_info (infoid,infoname,infolink) values ('adi', 'adi', 'sample info link adi');
 
 -- sample user activity
-
+insert into user_activity(activity_id, user_id, user_activity) values('1', 'adi', 'login');
+insert into user_activity(activity_id, user_id, user_activity) values('2', 'adi', 'news');
+insert into user_activity(activity_id, user_id, user_activity) values('3', 'dadang', 'general_info');
 -- sample user password

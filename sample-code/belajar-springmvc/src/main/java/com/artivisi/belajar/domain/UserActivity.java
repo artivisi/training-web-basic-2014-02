@@ -25,6 +25,30 @@ public class UserActivity {
 	@Column(nullable= false, name="user_activity")
 	private String userActivity;
 
+	public String getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(String activityId) {
+		this.activityId = activityId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getUserActivity() {
+		return userActivity;
+	}
+
+	public void setUserActivity(String userActivity) {
+		this.userActivity = userActivity;
+	}
+
 	
 	
 }
