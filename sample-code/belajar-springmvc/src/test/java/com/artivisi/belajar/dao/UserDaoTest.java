@@ -9,9 +9,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:aplikasi.xml")
+@Transactional(readOnly = true)
 public class UserDaoTest {
     
     @Autowired private UserDao userDao;
@@ -39,6 +42,7 @@ public class UserDaoTest {
     }
     
     @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void testSaveUpdateDelete(){
         User x = new User();
         x.setUsername("anton");
