@@ -13,6 +13,9 @@ insert into m_user_password(user_id,user_password) values ('adi', '123');
 -- sample news
 
 -- sample general info
+insert into m_general_info (infoid,infoname,infolink) values ('endy', 'endy', 'sample info link endy');
+insert into m_general_info (infoid,infoname,infolink) values ('dadang', 'dadang', 'sample info link dadang');
+insert into m_general_info (infoid,infoname,infolink) values ('adi', 'adi', 'sample info link adi');
 
 -- sample user activity
 
