@@ -1,9 +1,12 @@
 package com.artivisi.belajar.dao;
 
+import com.artivisi.belajar.domain.Roles;
 import com.artivisi.belajar.domain.User;
 import com.artivisi.belajar.domain.UserPassword;
 import java.util.List;
+import java.util.Set;
 import org.junit.Assert;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,14 @@ public class UserDaoTest {
         // cari user yang ada di sample data
         User endy = userDao.cariById("endy");
         Assert.assertNotNull(endy);
+        
+        // tes relasi many to many
+        Set<Roles> daftarRoles = endy.getDaftarRole();
+        Assert.assertNotNull(daftarRoles);
+        Assert.assertFalse(daftarRoles.isEmpty());
+        Assert.assertTrue(daftarRoles.size() == 1);
+        Roles r = daftarRoles.iterator().next();
+        Assert.assertEquals("agent", r.getRoleName());
         
         // cari user yang tidak ada
         Assert.assertNull(userDao.cariById("123"));

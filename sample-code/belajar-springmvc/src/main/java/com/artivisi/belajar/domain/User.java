@@ -85,5 +85,21 @@ public class User {
     public void setPassword(UserPassword password) {
         this.password = password;
     }
+
+    public List<UserActivity> getDaftarActivity() {
+        return daftarActivity;
+    }
+
+    public void setDaftarActivity(List<UserActivity> daftarActivity) {
+        this.daftarActivity = daftarActivity;
+    }
+
+    public Set<Roles> getDaftarRole() {
+        return daftarRole;
+    }
+
+    public void setDaftarRole(Set<Roles> daftarRole) {
+        this.daftarRole = daftarRole;
+    }
     
 }
