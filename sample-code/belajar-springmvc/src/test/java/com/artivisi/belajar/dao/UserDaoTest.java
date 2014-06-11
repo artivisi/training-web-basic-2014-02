@@ -44,7 +44,7 @@ public class UserDaoTest {
     public void testCariSemua(){
         List<User> hasil = userDao.cariSemuaUser(0, 100);
         System.out.println("Hasil : "+hasil.size());
-        Assert.assertTrue(hasil.size() == 3);
+        Assert.assertTrue("Hasil query semua user tidak sesuai dengan isi database", hasil.size() == 3);
         User u = hasil.get(0);
         Assert.assertEquals("adi", u.getUsername());
         
