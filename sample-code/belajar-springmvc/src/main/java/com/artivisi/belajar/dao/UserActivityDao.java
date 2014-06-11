@@ -42,11 +42,14 @@ public class UserActivityDao {
 				.uniqueResult();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<UserActivity> cariByUserId(String userId){
 		return sessionFactory.getCurrentSession()
 				.createQuery("select u from UserActivity u where u.user = :user")
 				.setParameter("user", userId)
 				.list();
 	}
+	
+	
 	
 }

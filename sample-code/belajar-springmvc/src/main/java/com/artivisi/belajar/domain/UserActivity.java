@@ -1,5 +1,7 @@
 package com.artivisi.belajar.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +20,16 @@ public class UserActivity {
 	@Column(name= "activity_id")
 	private String activityId;
 	
-        @ManyToOne
+    @ManyToOne
 	@JoinColumn(nullable= false, name="user_id")
 	private User user;
 	
 	@Column(nullable= false, name="user_activity")
 	private String userActivity;
 
+	@Column(name="activity_date")
+	private Date activityDate;
+	
 	public String getActivityId() {
 		return activityId;
 	}

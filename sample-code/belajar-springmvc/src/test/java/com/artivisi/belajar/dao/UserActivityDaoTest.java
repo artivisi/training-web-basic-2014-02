@@ -22,16 +22,19 @@ public class UserActivityDaoTest {
 	
 	@Test
 	public void testCariById(){
+		System.out.println("Cari by ID");
 		UserActivity userActivity = userActivityDao.cariById("1");
-		Assert.assertNotNull(userActivity);
+		Assert.assertNotNull(userActivity.getActivityId());
 		
 		Assert.assertNull(userActivityDao.cariById("xxx"));
 	}
 	
+	
 	@Test 
 	public void testCariSemua(){
+		System.out.println("Cari semua");
 		List<UserActivity> listActivity = userActivityDao.cariSemuaActivity(0, 3);
-		System.out.println("Hasil : " + listActivity.size());
+		System.out.println("--------Hasil----- : " + listActivity.size());
 		Assert.assertTrue(listActivity.size()==3);
 		UserActivity userActivity = listActivity.get(0);
 		Assert.assertEquals("login", userActivity.getUserActivity());

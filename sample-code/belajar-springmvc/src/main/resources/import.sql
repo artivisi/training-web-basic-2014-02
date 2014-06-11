@@ -31,9 +31,9 @@ insert into m_general_info (infoid,infoname,infolink) values ('dadang', 'dadang'
 insert into m_general_info (infoid,infoname,infolink) values ('adi', 'adi', 'sample info link adi');
 
 -- sample user activity
-insert into user_activity(activity_id, user_id, user_activity) values('1', 'adi', 'login');
-insert into user_activity(activity_id, user_id, user_activity) values('2', 'adi', 'news');
-insert into user_activity(activity_id, user_id, user_activity) values('3', 'dadang', 'general_info');
+insert into user_activity(activity_id, user_id, user_activity, activity_date) values('1', 'adi', 'login', '2014-06-11 17:00:00');
+insert into user_activity(activity_id, user_id, user_activity, activity_date) values('2', 'adi', 'news', '2014-06-11 18:00:00');
+insert into user_activity(activity_id, user_id, user_activity, activity_date) values('3', 'dadang', 'general_info', '2014-06-22 15:00:00');
 -- sample user password
 insert into m_user_password(user_id,user_password) values ('endy', '123');
 insert into m_user_password(user_id,user_password) values ('dadang', '123');
