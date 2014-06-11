@@ -12,6 +12,9 @@ insert into m_roles(roles_id, role_name) values('r2','administrator');
 insert into m_roles(roles_id, role_name) values('r3','agent');
 
 -- sample menu
+insert into m_menu (menu_id, menu_name, menu_description, create_by, create_date) value ('aaaa-bbbb-cccc-dddd', 'Login', 'First Page', 'John', NOW());
+insert into m_menu (menu_id, menu_name, menu_description, create_by, create_date) value ('eeee-ffff-gggg-hhhh', 'Home', 'Second Page', 'John', NOW());
+insert into m_menu (menu_id, menu_name, menu_description, create_by, create_date) value ('iiii-jjjj-kkkk-llll', 'Report', 'Third Page', 'John', NOW());
 
 -- sample news
 insert into m_news (newsId,news_code,news_createdate,news_createuser,news_date,news_desc) values ('1', '001', '2014-06-11', 'FERRY','2014-06-09','TRAINING DAYS 1 CUI');
