@@ -47,6 +47,8 @@ public class UserActivityDaoTest {
 		
 		List<UserActivity> listActivity = userActivityDao.cariByActivityDate(Date.valueOf("2014-06-11"), Date.valueOf("2014-06-12"));
 		System.out.println("--------Activity by date result : " + listActivity.size());
+		Assert.assertEquals(listActivity.size(), 2);
+		
 		
 	}
 	
