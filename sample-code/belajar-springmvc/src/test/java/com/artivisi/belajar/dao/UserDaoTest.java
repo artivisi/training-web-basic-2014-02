@@ -3,10 +3,10 @@ package com.artivisi.belajar.dao;
 import com.artivisi.belajar.domain.Roles;
 import com.artivisi.belajar.domain.User;
 import com.artivisi.belajar.domain.UserPassword;
+import com.artivisi.belajar.exception.UserDiblokirException;
 import java.util.List;
 import java.util.Set;
 import org.junit.Assert;
-import static org.junit.Assert.assertNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:aplikasi.xml")
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, rollbackFor = UserDiblokirException.class)
 public class UserDaoTest {
     
     @Autowired private UserDao userDao;
