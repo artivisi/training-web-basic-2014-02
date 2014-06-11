@@ -1,5 +1,6 @@
 package com.artivisi.belajar.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -39,6 +40,14 @@ public class UserActivityDaoTest {
 		UserActivity userActivity = listActivity.get(0);
 		Assert.assertEquals("login", userActivity.getUserActivity());
 		Assert.assertTrue(userActivityDao.cariSemuaActivity(0, 3).size()==3);
+	}
+	
+	@Test
+	public void cariActivityByPeriod(){
+		
+		List<UserActivity> listActivity = userActivityDao.cariByActivityDate(Date.valueOf("2014-06-11"), Date.valueOf("2014-06-12"));
+		System.out.println("--------Activity by date result : " + listActivity.size());
+		
 	}
 	
 }

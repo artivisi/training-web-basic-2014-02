@@ -1,5 +1,6 @@
 package com.artivisi.belajar.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -50,6 +51,13 @@ public class UserActivityDao {
 				.list();
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public List<UserActivity> cariByActivityDate(Date awal, Date akhir){
+		return sessionFactory.getCurrentSession()
+				.createQuery("select u from UserActivity u where u.activityDate between :awal and :akhir")
+				.setParameter("awal", awal)
+				.setParameter("akhir", akhir)
+				.list();
+	}
 	
 }
