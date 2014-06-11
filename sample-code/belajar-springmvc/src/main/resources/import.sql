@@ -7,6 +7,9 @@ insert into m_user (id,username,fullname,email) values ('adi', 'adi', 'Adi Sulis
 insert into m_user_password(user_id,user_password) values ('adi', '123');
 
 -- sample role
+insert into m_roles(roles_id, role_name) values('r1','host');
+insert into m_roles(roles_id, role_name) values('r2','administrator');
+insert into m_roles(roles_id, role_name) values('r3','agent');
 
 -- sample menu
 
