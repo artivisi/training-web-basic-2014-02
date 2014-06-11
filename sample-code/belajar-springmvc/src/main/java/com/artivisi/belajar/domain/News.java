@@ -16,7 +16,7 @@ public class News {
 
 	@Id @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private String news_id;
+    private String newsId;
     
     @Column(nullable = false, unique = false, name = "news_date")
     private Date newsDate;
@@ -32,4 +32,54 @@ public class News {
     
     @Column(nullable = false, unique = false,name = "news_createdate")
     private Date newsCreateDate;
+
+	public String getNews_id() {
+		return newsId;
+	}
+
+	public void setNews_id(String string) {
+		this.newsId = string;
+	}
+
+	public Date getNewsDate() {
+		return newsDate;
+	}
+
+	public void setNewsDate(Date newsDate) {
+		this.newsDate = newsDate;
+	}
+
+	public String getNewsCode() {
+		return newsCode;
+	}
+
+	public void setNewsCode(String newsCode) {
+		this.newsCode = newsCode;
+	}
+
+	public String getNewsDesc() {
+		return newsDesc;
+	}
+
+	public void setNewsDesc(String newsDesc) {
+		this.newsDesc = newsDesc;
+	}
+
+	public String getNewsCreateUser() {
+		return newsCreateUser;
+	}
+
+	public void setNewsCreateUser(String newsCreateUser) {
+		this.newsCreateUser = newsCreateUser;
+	}
+
+	public Date getNewsCreateDate() {
+		return newsCreateDate;
+	}
+
+	public void setNewsCreateDate(Date newsCreateDate) {
+		this.newsCreateDate = newsCreateDate;
+	}
+    
+    
 }
