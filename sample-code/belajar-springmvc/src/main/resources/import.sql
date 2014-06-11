@@ -26,6 +26,9 @@ insert into m_news (newsId,news_code,news_createdate,news_createuser,news_date,n
 insert into m_news (newsId,news_code,news_createdate,news_createuser,news_date,news_desc) values ('4', '004', '2014-06-11', 'KENNY','2014-06-12','TRAINING DAYS 4 CUI');
 insert into m_news (newsId,news_code,news_createdate,news_createuser,news_date,news_desc) values ('5', '005', '2014-06-11', 'SUGAN','2014-06-12','TRAINING DAYS 5 CUI');
 -- sample general info
+insert into m_general_info (infoid,infoname,infolink) values ('endy', 'endy', 'sample info link endy');
+insert into m_general_info (infoid,infoname,infolink) values ('dadang', 'dadang', 'sample info link dadang');
+insert into m_general_info (infoid,infoname,infolink) values ('adi', 'adi', 'sample info link adi');
 
 -- sample user activity
 

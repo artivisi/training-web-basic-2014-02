@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Menu {
 	@Id @GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-        @Column(name = "menu_id")
+    @Column(name = "menu_id")
 	private String menuId;
 	
 	@Column(name="menu_name", nullable=false, length=100)
@@ -28,7 +28,47 @@ public class Menu {
 	@Column(name="create_by", nullable=false)
 	private String createBy;
 	
-        @Column(name = "create_date")
+    @Column(name = "create_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
+
+	public String getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
+	}
+
+	public String getMenuName() {
+		return menuName;
+	}
+
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+
+	public String getMenuDescription() {
+		return menuDescription;
+	}
+
+	public void setMenuDescription(String menuDescription) {
+		this.menuDescription = menuDescription;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}          
 }
