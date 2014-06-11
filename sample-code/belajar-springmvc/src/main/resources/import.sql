@@ -11,6 +11,12 @@ insert into m_roles(roles_id, role_name) values('r1','host');
 insert into m_roles(roles_id, role_name) values('r2','administrator');
 insert into m_roles(roles_id, role_name) values('r3','agent');
 
+-- sample role user
+insert into m_user_roles(user_id, roles_id) values ('endy','r3');
+insert into m_user_roles(user_id, roles_id) values ('dadang','r2');
+insert into m_user_roles(user_id, roles_id) values ('adi','r2');
+insert into m_user_roles(user_id, roles_id) values ('adi','r1');
+
 -- sample menu
 
 -- sample news
