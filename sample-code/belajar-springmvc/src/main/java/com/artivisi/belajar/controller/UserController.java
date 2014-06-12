@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
@@ -26,7 +28,7 @@ public class UserController {
 		return mm;
 	}
 	
-	@RequestMapping("/config/user/form")
+	@RequestMapping(value = "/config/user/form", method = RequestMethod.GET)
 	public ModelAndView configUserForm(@RequestParam (required=false) Integer type, @RequestParam (required=false) String uid) {
 		ModelAndView mm = new ModelAndView();
 		String titleForm = "Add User";
@@ -38,8 +40,20 @@ public class UserController {
 		
 		mm.addObject("titleForm", titleForm);
 		mm.addObject("uid", uid);
+		mm.addObject("user", new User());
 		return mm;
 	}
+        
+	@RequestMapping(value = "/config/user/form", method = RequestMethod.POST)
+        public String prosesUserForm(@ModelAttribute User u){
+            System.out.println("Username : "+u.getUsername());
+            System.out.println("Fullname : "+u.getFullname());
+            System.out.println("Email : "+u.getEmail());
+            
+            userDao.save(u);
+            
+            return "redirect:list";
+        }
 	
 	@RequestMapping("/config/user/view")
 	public ModelAndView configUserView() {
