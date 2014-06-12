@@ -21,5 +21,7 @@
         <property name="prefix" value="/WEB-INF/templates/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    <mvc:view-controller path="/login" view-name="login"/>
 
 </beans>
