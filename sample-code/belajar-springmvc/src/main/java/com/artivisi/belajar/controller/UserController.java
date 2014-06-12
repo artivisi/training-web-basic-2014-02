@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,7 +59,7 @@ public class UserController {
 	}
         
 	@RequestMapping(value = "/config/user/form", method = RequestMethod.POST)
-        public String prosesUserForm(@ModelAttribute @Valid User u, BindingResult errors, SessionStatus status){
+        public String prosesUserForm(@ModelAttribute @Valid User u, BindingResult errors, SessionStatus status, HttpSession session){
             System.out.println("Username : "+u.getUsername());
             System.out.println("Fullname : "+u.getFullname());
             System.out.println("Email : "+u.getEmail());
@@ -69,6 +70,7 @@ public class UserController {
             
             userDao.save(u);
             status.setComplete();
+            session.removeAttribute("titleForm");
             return "redirect:list";
         }
 	
