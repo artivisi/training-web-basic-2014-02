@@ -15,7 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity @Table(name="m_user")
 public class User {
@@ -24,6 +28,9 @@ public class User {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     
+    @NotNull
+    @NotEmpty
+    @Size(min = 3, max = 20)
     @Column(nullable = false, unique = true)
     private String username;
     
@@ -32,6 +39,9 @@ public class User {
     
     private String fullname;
     
+    @NotNull
+    @NotEmpty
+    @Email
     @Column(nullable = false, unique = true)
     private String email;
     

@@ -4,17 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
+@SessionAttributes("titleForm")
 public class UserController {
 	@Autowired private UserDao userDao;
 	
@@ -54,13 +58,17 @@ public class UserController {
 	}
         
 	@RequestMapping(value = "/config/user/form", method = RequestMethod.POST)
-        public String prosesUserForm(@ModelAttribute User u){
+        public String prosesUserForm(@ModelAttribute @Valid User u, BindingResult errors, SessionStatus status){
             System.out.println("Username : "+u.getUsername());
             System.out.println("Fullname : "+u.getFullname());
             System.out.println("Email : "+u.getEmail());
             
-            userDao.save(u);
+            if(errors.hasErrors()) {
+                return "/config/user/form";
+            }
             
+            userDao.save(u);
+            status.setComplete();
             return "redirect:list";
         }
 	

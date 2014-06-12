@@ -14,15 +14,18 @@
                 <form:form role="form" commandName="user">
 		  <div class="form-group">
 		    <label for="iUsername">User Name</label>
-                    <form:input path="username" class="form-control" id="iUsername"/>
+                    <form:input path="username" cssClass="form-control" id="iUsername"/>
+                    <form:errors path="username" />
 		  </div>
 		  <div class="form-group">
 		    <label for="iFullname">Full Name</label>
-                    <form:input path="fullname" class="form-control" id="iFullname"/>
+                    <form:input path="fullname" cssClass="form-control" id="iFullname"/>
+                    <form:errors path="fullname" />
 		  </div>
 		  <div class="form-group">
 		    <label for="iEmail">Email</label>
-                    <form:input path="email" class="form-control" id="iEmail"/>
+                    <form:input path="email" cssClass="form-control" id="iEmail"/>
+                    <form:errors path="email" />
 		  </div>
 		  		  
 		  <button type="submit" class="btn btn-primary btn-sm">${titleForm}</button>		  
