@@ -56,18 +56,18 @@ public class NewsDaoTest {
         x.setNewsDesc("test doang");
         
         newsDao.save(x);
-        Assert.assertNotNull(x.getNews_id());
-        System.out.println("ID : "+x.getNews_id());
+        Assert.assertNotNull(x.getNewsId());
+        System.out.println("ID : "+x.getNewsId());
         
         x.setNewsCreateUser("FERRY");
         newsDao.save(x);
         
-        News xx = newsDao.cariById(x.getNews_id());
+        News xx = newsDao.cariById(x.getNewsId());
         Assert.assertNotNull(xx);
         Assert.assertEquals("FERRY", xx.getNewsCreateUser());
         
         newsDao.delete(xx);
-        Assert.assertNull(newsDao.cariById(x.getNews_id()));
+        Assert.assertNull(newsDao.cariById(x.getNewsId()));
         
     }
 }
