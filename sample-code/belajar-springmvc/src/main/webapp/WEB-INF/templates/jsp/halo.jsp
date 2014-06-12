@@ -2,11 +2,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Halo Spring MVC</title>
     </head>
     <body>
-        <h1>${pesan}</h1>
-        <h2>Waktu saat ini : ${waktu}</h2>
+
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>${pesan}</h1>
+            <h2>Waktu saat ini : ${waktu}</h2>
+        </div>
+
     </body>
 </html>
