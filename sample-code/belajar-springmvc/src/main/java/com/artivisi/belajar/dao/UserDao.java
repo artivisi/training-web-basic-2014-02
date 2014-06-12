@@ -22,6 +22,9 @@ public class UserDao {
     }
     
     public User cariById(String id){
+        if(id == null || id.trim().length() < 1) {
+            return null;
+        }
         return (User) sessionFactory.getCurrentSession().get(User.class, id);
     }
     

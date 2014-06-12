@@ -29,7 +29,7 @@
 						<td>${i.username}</td>
 						<td>${i.fullname}</td>
 						<td>${i.email}</td>
-						<td><a href="form?type=2&uid=${i.id}" class="btn btn-success btn-sm active" role="button">Edit</a></td>
+						<td><a href="form?type=2&id=${i.id}" class="btn btn-success btn-sm active" role="button">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</table>

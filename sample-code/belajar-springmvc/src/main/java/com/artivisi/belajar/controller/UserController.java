@@ -29,7 +29,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/config/user/form", method = RequestMethod.GET)
-	public ModelAndView configUserForm(@RequestParam (required=false) Integer type, @RequestParam (required=false) String uid) {
+	public ModelAndView configUserForm(@RequestParam (required=false) Integer type, 
+                @RequestParam (required=false) String id) {
 		ModelAndView mm = new ModelAndView();
 		String titleForm = "Add User";
 		if (type==1) {
@@ -39,8 +40,16 @@ public class UserController {
 		}
 		
 		mm.addObject("titleForm", titleForm);
-		mm.addObject("uid", uid);
-		mm.addObject("user", new User());
+		mm.addObject("uid", id);
+                System.out.println("UID : "+id);
+                User u = userDao.cariById(id);
+                if(u == null){
+                    u = new User();
+                }
+                
+                System.out.println("ID : "+u.getId());
+                
+		mm.addObject("user", u);
 		return mm;
 	}
         

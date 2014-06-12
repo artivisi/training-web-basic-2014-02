@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
     
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", optional = true)
     private UserPassword password;
     
     private String fullname;
