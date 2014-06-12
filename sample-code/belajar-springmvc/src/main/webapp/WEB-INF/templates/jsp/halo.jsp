@@ -6,7 +6,7 @@
         <title>Halo Spring MVC</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>${pesan}</h1>
         <h2>Waktu saat ini : ${waktu}</h2>
     </body>
 </html>
