@@ -25,7 +25,7 @@
               </h3>
             
             
-           <table class = "table">
+           <table class = "table table-striped">
            		<tr>
            			<td>News ID </td>
            			<td>News Code </td>
@@ -38,11 +38,11 @@
  				<c:forEach var="listVar" items="${newslist}">
                      <tr>
                      	<td><c:out value="${listVar.newsId}"/></td>
-                     	<td><c:out value="${listVar.newsDate}"/></td>
                      	<td><c:out value="${listVar.newsCode}"/></td>
-                     	<td><c:out value="${listVar.newsDesc}"/></td>
-                     	<td><c:out value="${listVar.newsCreateUser}"/></td>
                      	<td><c:out value="${listVar.newsCreateDate}"/></td>
+                     	<td><c:out value="${listVar.newsCreateUser}"/></td>
+                     	<td><c:out value="${listVar.newsDate}"/></td>
+                     	<td><c:out value="${listVar.newsDesc}"/></td>
                      	<td><a href="#">Edit</a></td>
                      	<td><a href="#">Delete</a></td>
              		 </tr>                      
