@@ -25,7 +25,7 @@
               </h3>
             
             
-           <table>
+           <table class = "table">
            		<tr>
            			<td>News ID </td>
            			<td>News Code </td>
