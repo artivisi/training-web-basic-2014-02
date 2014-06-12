@@ -5,10 +5,13 @@ import com.artivisi.belajar.domain.User;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+@Transactional 
 @Repository
 public class NewsDao {
 	 @Autowired
