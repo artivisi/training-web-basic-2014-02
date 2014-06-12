@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
@@ -24,6 +27,28 @@ import org.springframework.web.bind.support.SessionStatus;
 public class UserController {
 	@Autowired private UserDao userDao;
 	
+        @RequestMapping("/download")
+        public void downloadFile(@RequestParam String nama, HttpServletResponse res) throws Exception {
+            InputStream in = this.getClass().getResourceAsStream("/"+nama+".pdf");
+            
+            if(in == null){
+                res.setStatus(404);
+                return;
+            }
+            
+            res.setContentType("application/pdf");
+            res.setHeader("Content-Disposition", "attachment; filename=unduhan.pdf");
+            
+            OutputStream out = res.getOutputStream();
+            int data;
+            while((data = in.read()) != -1) {
+                out.write(data);
+            }
+            out.flush();
+            out.close();
+            in.close();
+        }
+        
 	@RequestMapping("/config/user/data")
         @ResponseBody
         public List<User> dataUser(){
