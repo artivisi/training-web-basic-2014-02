@@ -1,10 +1,10 @@
 package com.artivisi.belajar.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -16,6 +16,7 @@ public class UserPassword implements Serializable {
 	@Id @Column(name="user_id")
 	private String id;
 	
+    @JsonBackReference    
     @OneToOne @PrimaryKeyJoinColumn
     private User user;
     

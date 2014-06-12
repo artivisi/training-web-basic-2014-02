@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -23,6 +24,12 @@ import org.springframework.web.bind.support.SessionStatus;
 public class UserController {
 	@Autowired private UserDao userDao;
 	
+	@RequestMapping("/config/user/data")
+        @ResponseBody
+        public List<User> dataUser(){
+            return userDao.cariSemuaUser(0, 100);
+        }
+        
 	@RequestMapping("/config/user/list")
 	public ModelAndView configUserList(@RequestParam (required=false) Integer start, @RequestParam (required=false) Integer rows) {
 		ModelAndView mm = new ModelAndView();
