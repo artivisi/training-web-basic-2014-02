@@ -10,11 +10,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -23,6 +27,34 @@ import org.springframework.web.bind.support.SessionStatus;
 public class UserController {
 	@Autowired private UserDao userDao;
 	
+        @RequestMapping("/download")
+        public void downloadFile(@RequestParam String nama, HttpServletResponse res) throws Exception {
+            InputStream in = this.getClass().getResourceAsStream("/"+nama+".pdf");
+            
+            if(in == null){
+                res.setStatus(404);
+                return;
+            }
+            
+            res.setContentType("application/pdf");
+            res.setHeader("Content-Disposition", "attachment; filename=unduhan.pdf");
+            
+            OutputStream out = res.getOutputStream();
+            int data;
+            while((data = in.read()) != -1) {
+                out.write(data);
+            }
+            out.flush();
+            out.close();
+            in.close();
+        }
+        
+	@RequestMapping("/config/user/data")
+        @ResponseBody
+        public List<User> dataUser(){
+            return userDao.cariSemuaUser(0, 100);
+        }
+        
 	@RequestMapping("/config/user/list")
 	public ModelAndView configUserList(@RequestParam (required=false) Integer start, @RequestParam (required=false) Integer rows) {
 		ModelAndView mm = new ModelAndView();
