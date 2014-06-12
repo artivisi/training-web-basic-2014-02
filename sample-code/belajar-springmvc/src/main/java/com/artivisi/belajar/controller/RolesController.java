@@ -3,6 +3,8 @@ package com.artivisi.belajar.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +18,19 @@ import com.artivisi.belajar.domain.Roles;
 @Controller
 public class RolesController {
 	
+	
+	@Autowired
+    private RolesDao rolesDao;
 
     @RequestMapping("/config/roles/list")
     public ModelAndView getList(@RequestParam(required = false) String nama, @RequestParam(required = false)String template){
         
-        ModelAndView mm = new ModelAndView();
+    	ModelAndView mm = new ModelAndView();
+    	  
+    	List<Roles> roles = rolesDao.cariSemuaRoles(0, 100);
+      
         
+        mm.addObject("roleslist",roles);
                 
         return mm;
     }
