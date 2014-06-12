@@ -16,6 +16,7 @@ public class News {
 
 	@Id @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@Column(name = "news_id")
     private String newsId;
     
     @Column(nullable = false, unique = false, name = "news_date")
@@ -33,11 +34,11 @@ public class News {
     @Column(nullable = false, unique = false,name = "news_createdate")
     private Date newsCreateDate;
 
-	public String getNews_id() {
+	public String getNewsId() {
 		return newsId;
 	}
 
-	public void setNews_id(String string) {
+	public void setNewsId(String string) {
 		this.newsId = string;
 	}
 

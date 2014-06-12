@@ -6,13 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
 @Entity @Table(name="m_user_password")
 public class UserPassword implements Serializable {
     
-    @Id @OneToOne @JoinColumn(name="user_id")
+	@Id @Column(name="user_id")
+	private String id;
+	
+    @OneToOne @PrimaryKeyJoinColumn
     private User user;
     
     @Column(nullable = false, name = "user_password")
