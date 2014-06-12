@@ -5,14 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HaloController {
     
     @RequestMapping("/halo")
-    public ModelMap halo(@RequestParam(required = false) String nama){
+    public ModelAndView halo(@RequestParam(required = false) String nama, @RequestParam(required = false)String template){
         System.out.println("Menjalankan method halo");
-        ModelMap mm = new ModelMap();
+        ModelAndView mm = new ModelAndView();
         
         String pesan = "Hello ";
         
@@ -22,8 +23,12 @@ public class HaloController {
             pesan += "World";
         }
         
-        mm.addAttribute("waktu", new Date());
-        mm.addAttribute("pesan", pesan);
+        if(template != null){
+            mm.setViewName(template);
+        }
+        
+        mm.addObject("waktu", new Date());
+        mm.addObject("pesan", pesan);
         
         return mm;
     }
