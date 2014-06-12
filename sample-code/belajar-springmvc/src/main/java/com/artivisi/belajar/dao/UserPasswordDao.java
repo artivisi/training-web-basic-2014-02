@@ -7,8 +7,11 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Repository
+@Transactional
 public class UserPasswordDao {
     @Autowired
     private SessionFactory sessionFactory;
@@ -25,9 +28,9 @@ public class UserPasswordDao {
         return (UserPassword) sessionFactory.getCurrentSession().get(UserPassword.class, u.getId());
     }
     
-    public List<User> cariSemuaUserPassword(Integer start, Integer rows){
+    public List<UserPassword> cariSemuaUserPassword(Integer start, Integer rows){
         return sessionFactory.getCurrentSession()
-                .createQuery("select u from UserPassword u order by u.user")
+                .createQuery("select up from UserPassword up ")
                 .setFirstResult(start)
                 .setMaxResults(rows)
                 .list();
