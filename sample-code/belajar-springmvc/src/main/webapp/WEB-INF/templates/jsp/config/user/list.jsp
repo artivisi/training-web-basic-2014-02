@@ -17,15 +17,21 @@
             <div class="form-group">
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>User Id</th>
-                        <th>User Name</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
+                        <th><a href="list?page=${currentPage}&sort=username">User Name</a></th>
+                        <th><a href="list?page=${currentPage}&sort=fullname">Full Name</a></th>
+                        <th>
+                            Email
+                            <a class="btn" href="list?sort=email&dir=asc">
+                                <span class="glyphicon glyphicon-arrow-up"></span>
+                            </a>
+                            <a class="btn" href="list?sort=email&dir=desc">
+                                <span class="glyphicon glyphicon-arrow-down"></span>
+                            </a>
+                        </th>
                         <th>Edit</th>
                     </tr>
                     <c:forEach var="i" items="${lUser}">
                         <tr>
-                            <td>${i.id}</td>
                             <td>${i.username}</td>
                             <td>${i.fullname}</td>
                             <td>${i.email}</td>
@@ -36,11 +42,11 @@
                 Total User(s) : ${totUser}	
 
                 <ul class="pagination">
-                    <li><a href="list?page=1">&laquo;</a></li>
+                    <li><a href="list?page=1&sort=${currentSort}&dir=${currentDir}">&laquo;</a></li>
                     <c:forEach var="p" begin="1" end="${totPage}">
-                    <li><a href="list?page=${p}">${p}</a></li>
+                    <li><a href="list?page=${p}&sort=${currentSort}&dir=${currentDir}">${p}</a></li>
                     </c:forEach>
-                    <li><a href="list?page=${totPage}">&raquo;</a></li>
+                    <li><a href="list?page=${totPage}&sort=${currentSort}&dir=${currentDir}">&raquo;</a></li>
                 </ul>
             </div>		
         </form>	

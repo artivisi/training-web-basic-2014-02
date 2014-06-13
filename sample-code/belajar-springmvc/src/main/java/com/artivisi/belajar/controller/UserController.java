@@ -53,17 +53,21 @@ public class UserController {
 	@RequestMapping("/config/user/data")
         @ResponseBody
         public List<User> dataUser(){
-            return userDao.cariSemuaUser(0, 100);
+            return userDao.cariSemuaUser(0, 100, null, null);
         }
         
 	@RequestMapping("/config/user/list")
-	public ModelAndView configUserList(@RequestParam (required=false) Integer page, @RequestParam (required=false) Integer rows) {
+	public ModelAndView configUserList(@RequestParam (required=false) Integer page, 
+                @RequestParam (required=false) Integer rows,
+                @RequestParam(required = false) String sort, 
+                @RequestParam(required = false) String dir
+                ) {
 		ModelAndView mm = new ModelAndView();
 		if(page==null) page = 1; if(rows==null) rows = 10;
                 
                 Integer start = PageHelper.pageToStart(page, rows);
                 
-		List<User> lUser = userDao.cariSemuaUser(start, rows);
+		List<User> lUser = userDao.cariSemuaUser(start, rows, sort, dir);
 		mm.addObject("lUser", lUser);
                 
                 Long jumlahSemuaUser = userDao.countSemuaUser();
@@ -72,6 +76,8 @@ public class UserController {
 		mm.addObject("totUser", jumlahSemuaUser);
 		mm.addObject("totPage", jumlahHalaman);
 		mm.addObject("currentPage", page);
+		mm.addObject("currentSort", sort);
+		mm.addObject("currentDir", dir);
 		return mm;
 	}
 	
