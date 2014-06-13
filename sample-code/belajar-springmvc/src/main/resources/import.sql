@@ -20,7 +20,7 @@ insert into m_user (id,username,fullname,email) values ('adi15', 'adi15', 'Adi S
 -- sample role
 insert into m_roles(roles_id, role_name) values('r1','host');
 insert into m_roles(roles_id, role_name) values('r2','administrator');
-insert into m_roles(roles_id, role_name) values('r3','agent');
+insert into m_roles(roles_id, role_name) values('r3','ROLE_USER');
 
 -- sample role user
 insert into m_user_roles(user_id, roles_id) values ('endy','r3');
@@ -49,6 +49,6 @@ insert into user_activity(activity_id, user_id, user_activity, activity_date) va
 insert into user_activity(activity_id, user_id, user_activity, activity_date) values('2', 'adi', 'news', '2014-06-11 18:00:00');
 insert into user_activity(activity_id, user_id, user_activity, activity_date) values('3', 'dadang', 'general_info', '2014-06-22 15:00:00');
 -- sample user password
-insert into m_user_password(user_id,user_password) values ('endy', '123');
+insert into m_user_password(user_id,user_password) values ('endy', '$2a$04$1pQycMK813XqoyN5ga1owORySPexHzFwdNNm0QoGZGMEf8Gcn7D1K');
 insert into m_user_password(user_id,user_password) values ('dadang', '123');
 insert into m_user_password(user_id,user_password) values ('adi', '123');

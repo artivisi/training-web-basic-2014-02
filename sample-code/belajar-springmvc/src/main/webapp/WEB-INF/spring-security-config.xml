@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+    
+    <http>
+        <intercept-url pattern="/config/user/**" access="ROLE_USER" />
+        <intercept-url pattern="/halo**" access="ROLE_USER" />
+        <form-login 
+            login-page='/login' 
+            default-target-url='/config/user/list'
+            authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login" />
+    </http>
+    
+    <beans:bean name="bcryptEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
+    <authentication-manager>
+        <authentication-provider>
+            <!--
+            <user-service>
+                <user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="bob" password="bobspassword" authorities="ROLE_USER" />
+            </user-service>
+            -->
+            <password-encoder ref="bcryptEncoder"/>
+            <jdbc-user-service 
+                data-source-ref="dataSource"
+                users-by-username-query="select u.username, up.user_password as password, true as enabled
+                                        from m_user u 
+                                        inner join m_user_password up 
+                                        on u.id = up.user_id
+                                        where u.username = ?"
+                authorities-by-username-query="select u.username, r.role_name as authority
+                                        from m_user u
+                                        inner join m_user_roles ur
+                                        on u.id = ur.user_id
+                                        inner join m_roles r
+                                        on ur.roles_id = r.roles_id
+                                        where u.username=?"
+            />
+        </authentication-provider>
+    </authentication-manager>
+    
+</beans:beans>
