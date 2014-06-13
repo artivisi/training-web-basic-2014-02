@@ -12,7 +12,7 @@
         <div class="container">
 
             <c:if test="${param.error}">
-                Username / Password salah
+                Gagal Login : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
             </c:if>
 
             <form class="form-signin" role="form" action="j_spring_security_check" method="POST">
