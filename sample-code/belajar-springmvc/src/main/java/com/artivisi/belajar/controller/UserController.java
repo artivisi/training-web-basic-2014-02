@@ -13,9 +13,12 @@ import com.artivisi.belajar.domain.User;
 import com.artivisi.belajar.helper.PageHelper;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.Date;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +29,9 @@ import org.springframework.web.bind.support.SessionStatus;
 @Controller
 @SessionAttributes("titleForm")
 public class UserController {
+    
+    private List<String> supportedFormat = Arrays.asList("pdf", "xls", "doc");
+    
 	@Autowired private UserDao userDao;
 	
         @RequestMapping("/download")
@@ -48,6 +54,24 @@ public class UserController {
             out.flush();
             out.close();
             in.close();
+        }
+        
+        
+	@RequestMapping("/config/user/report")
+        public ModelMap reportUser(@RequestParam(required = false) String format){
+            
+            // default format pdf
+            if(format == null || !supportedFormat.contains(format.trim().toLowerCase())){
+                format = "pdf";
+            }
+            
+            ModelMap mm = new ModelMap();
+            mm.addAttribute("format", format.trim().toLowerCase());
+            mm.addAttribute("terakhirUpdate", new Date());
+            mm.addAttribute("judul", "Daftar User");
+            mm.addAttribute("dataSource", userDao.cariSemuaUser(0, userDao.countSemuaUser().intValue(), null, null));
+            
+            return mm;
         }
         
 	@RequestMapping("/config/user/data")

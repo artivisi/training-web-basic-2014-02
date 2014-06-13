@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daftar_user" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ab01905-8f2e-4649-9ec3-7b74d89d269a">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="judul" class="java.lang.String"/>
+	<parameter name="terakhirUpdate" class="java.util.Date"/>
+	<field name="username" class="java.lang.String"/>
+	<field name="fullname" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0d68f470-05e5-4239-855d-2c1664a5f00c" x="178" y="0" width="214" height="64"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{judul}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="87de1d9b-aad8-4f4e-bd3b-7cfba95e3d86" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{judul}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8bacaa52-582d-4193-83ee-26e6af3a8f71" x="39" y="0" width="139" height="20"/>
+				<textElement/>
+				<text><![CDATA[Username]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15fcae1b-7078-4f7c-ad14-be172ccef417" x="326" y="0" width="229" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama Lengkap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="200edc52-2e66-4b99-a7a5-de4855716c95" x="178" y="0" width="148" height="20"/>
+				<textElement/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5e6f900-6d53-4a64-806f-fb106b55c396" x="0" y="0" width="39" height="20"/>
+				<textElement/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="4fc8e9af-eb48-4156-b01f-78f9e6c6a1db" x="39" y="0" width="139" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ced2362-bf48-4aa4-a3cc-aaec3d22d2da" x="326" y="0" width="229" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="465ad273-4473-410b-8f52-ca6ca56cc364" x="178" y="0" width="148" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="40bc1250-175f-4390-9409-507ce7660155" x="0" y="0" width="39" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="628ce1d2-7285-4267-9aed-b6b433c7244d" x="424" y="0" width="47" height="20"/>
+				<textElement/>
+				<text><![CDATA[halaman]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e9d32307-ef0a-49f2-bbd2-3bcc3b362359" x="471" y="0" width="27" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="286218de-27a7-4f2b-99fe-53487a74d195" x="498" y="0" width="25" height="20"/>
+				<textElement/>
+				<text><![CDATA[dari]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement uuid="666949f0-fcbd-4042-8fea-8b3c113b11db" x="523" y="0" width="31" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3c4744e9-25be-4f40-9c77-57b460333d24" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Terakhir update]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="207c725e-4638-4ab2-95e4-df9b73cce7a5" x="100" y="0" width="226" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{terakhirUpdate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
