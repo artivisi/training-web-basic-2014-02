@@ -9,6 +9,7 @@
     
     <http>
         <intercept-url pattern="/config/user/**" access="ROLE_USER" />
+        <intercept-url pattern="/halo**" access="ROLE_USER" />
         <form-login 
             login-page='/login' 
             default-target-url='/config/user/list'

@@ -10,6 +10,8 @@
         <div class="jumbotron">
             <h1>${pesan}</h1>
             <h2>Waktu saat ini : ${waktu}</h2>
+            <h3>User yang sedang login : ${username}</h3>
+            <h3>Permissions : ${permissions}</h3>
         </div>
 
     </body>
