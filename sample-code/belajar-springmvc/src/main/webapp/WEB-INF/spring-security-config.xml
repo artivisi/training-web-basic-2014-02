@@ -16,7 +16,7 @@
             authentication-failure-url="/login?error=true"/>
         <logout logout-success-url="/login" />
         <session-management>
-            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
         </session-management>
     </http>
     
