@@ -30,7 +30,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("titleForm")
 public class UserController {
     
-    private List<String> supportedFormat = Arrays.asList("pdf", "xls", "doc");
+    private List<String> supportedFormat = Arrays.asList("pdf", "xls", "html", "csv");
     
 	@Autowired private UserDao userDao;
 	
