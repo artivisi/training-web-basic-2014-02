@@ -3,6 +3,7 @@ package com.artivisi.belajar.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
@@ -56,31 +57,43 @@ public class RolesController {
 			titleForm = "Add Roles";
 		} else if(type==2) {
 			titleForm = "Edit Roles";
-		}
+		} 
 		
 		mm.addObject("titleForm", titleForm);
-		mm.addObject("uid", id);		
+		mm.addObject("rolesId", id);		
         
         Roles u = rolesDao.cariById(id);
         
-        if(u == null){
-            u = new Roles();
+        if (type==3) {  
+        	
+        	System.out.println(" Roles ID : "+u.getRolesId());
+        	rolesDao.delete(u);
+        	mm.setViewName("/config/roles/list");
+        	
+        } else {
+        
+	        if(u == null){
+	            u = new Roles();
+	        }
+	                
+	        System.out.println(" Roles ID : "+u.getRolesId());
+	                
+			mm.addObject("roles", u);
         }
-                
-        System.out.println(" Roles ID : "+u.getRolesId());
-                
-		mm.addObject("roles", u);
+        
 		return mm;
     }
     
     
     @RequestMapping(value = "/config/roles/form", method = RequestMethod.POST)
-    public String postForm(@ModelAttribute @Valid Roles u, BindingResult errors, SessionStatus status){
+    public String postForm(@ModelAttribute @Valid Roles u, BindingResult errors, SessionStatus status,HttpSession session){
         System.out.println("Rolesname : "+u.getRoleName());
         
         if(errors.hasErrors()) {
             return "/config/roles/form";
         }
+        
+        System.out.println("roles id : " + u.getRolesId());
         
         rolesDao.save(u);
         status.setComplete();
