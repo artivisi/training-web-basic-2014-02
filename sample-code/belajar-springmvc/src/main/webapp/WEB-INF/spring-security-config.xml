@@ -15,7 +15,9 @@
             default-target-url='/config/user/list'
             authentication-failure-url="/login?error=true"/>
         <logout logout-success-url="/login" />
-        <csrf />
+        <session-management>
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>
     </http>
     
     <beans:bean name="bcryptEncoder"
@@ -47,5 +49,7 @@
             />
         </authentication-provider>
     </authentication-manager>
+    
+    
     
 </beans:beans>
