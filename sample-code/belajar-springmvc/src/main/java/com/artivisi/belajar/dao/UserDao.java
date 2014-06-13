@@ -49,4 +49,10 @@ public class UserDao {
                 .setParameter("nama", "%"+nama.toLowerCase()+"%")
                 .list();
     }
+
+    public Long countSemuaUser() {
+        return (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(u) from User u")
+                .uniqueResult();
+    }
 }

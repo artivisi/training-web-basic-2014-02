@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import com.artivisi.belajar.helper.PageHelper;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -56,12 +57,21 @@ public class UserController {
         }
         
 	@RequestMapping("/config/user/list")
-	public ModelAndView configUserList(@RequestParam (required=false) Integer start, @RequestParam (required=false) Integer rows) {
+	public ModelAndView configUserList(@RequestParam (required=false) Integer page, @RequestParam (required=false) Integer rows) {
 		ModelAndView mm = new ModelAndView();
-		if(start==null) start = 0; if(rows==null) rows = 100;
+		if(page==null) page = 1; if(rows==null) rows = 10;
+                
+                Integer start = PageHelper.pageToStart(page, rows);
+                
 		List<User> lUser = userDao.cariSemuaUser(start, rows);
 		mm.addObject("lUser", lUser);
-		mm.addObject("totUser", lUser.size());
+                
+                Long jumlahSemuaUser = userDao.countSemuaUser();
+                Integer jumlahHalaman = (jumlahSemuaUser.intValue() / rows) + 1;
+                
+		mm.addObject("totUser", jumlahSemuaUser);
+		mm.addObject("totPage", jumlahHalaman);
+		mm.addObject("currentPage", page);
 		return mm;
 	}
 	
