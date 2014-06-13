@@ -1,5 +1,7 @@
 package com.artivisi.belajar.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -35,6 +37,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
     
+    @JsonManagedReference
     @OneToOne(mappedBy = "user", optional = true)
     private UserPassword password;
     
@@ -46,9 +49,11 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserActivity> daftarActivity = new ArrayList<UserActivity>();
     
+    @JsonIgnore
     @ManyToMany
          @JoinTable(
                  name = "m_user_roles",

@@ -28,9 +28,16 @@ public class UserDao {
         return (User) sessionFactory.getCurrentSession().get(User.class, id);
     }
     
-    public List<User> cariSemuaUser(Integer start, Integer rows){
+    public List<User> cariSemuaUser(Integer start, Integer rows, String sort, String dir){
+        if(sort == null || sort.trim().length() < 1) {
+            sort = "username";
+        }
+        
+        if(dir == null || dir.trim().length() < 1){
+            dir = "asc";
+        }
         return sessionFactory.getCurrentSession()
-                .createQuery("select u from User u order by u.username")
+                .createQuery("select u from User u order by u."+sort+" "+dir)
                 .setFirstResult(start)
                 .setMaxResults(rows)
                 .list();
@@ -48,5 +55,11 @@ public class UserDao {
                 .createQuery("select u from User u where lower(u.fullname) like :nama order by u.username")
                 .setParameter("nama", "%"+nama.toLowerCase()+"%")
                 .list();
+    }
+
+    public Long countSemuaUser() {
+        return (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(u) from User u")
+                .uniqueResult();
     }
 }

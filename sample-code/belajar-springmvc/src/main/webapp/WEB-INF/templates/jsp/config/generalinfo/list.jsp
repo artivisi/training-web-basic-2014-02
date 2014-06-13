@@ -6,32 +6,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>List General Info</title>
 </head>
 <body>
-	<div class="jumbotron">
-	    
-	    <table class="table table-striped">
+	<h3>List General Info</h3>
+	
+	<form role="form">
+		<div class="form-group">		
+			<a href="form?type=1" class="btn btn-primary btn-sm active" role="button">Add User</a>
+		</div>	
+		<div class="form-group">
+		<table class="table table-striped">
 			<tr>
-				<td>InfoName</td>
-				<td>InfoLink</td>
+				<th>InfoId</th>
+				<th>InfoName</th>
+				<th>InfoLink</th>
+				<th>Edit</th>
 			</tr>
 			<c:forEach var="listVar" items="${generalInfoList}">
 				<tr>
-            		<td><c:out value="${listVar.infoName}"/></td>
-                	<td><c:out value="${listVar.infoLink}"/></td>
-                	<td><a href="#">Edit</a></td>
-                	<td><a href="#">Delete</a></td>
+            		<td>${listVar.infoId}</td>
+            		<td>${listVar.infoName}</td>
+                	<td>${listVar.infoLink}/></td>
+                	<td><a href="form?type=2&id=${listVar.infoId}" class="btn btn-success btn-sm active" role="button">Edit</a></td>
            		</tr>
         	</c:forEach>		
 		</table>
-		<h2>
-			ROLES LIST                 
-        </h2>
-        <h3>
-            Total Records : <c:out value="${fn:length(generalInfoList)}"/>
-        </h3>
-	</div>
-	
+        Total Info : ${totInfo}
+        </div>
+	</form>
 </body>
 </html>

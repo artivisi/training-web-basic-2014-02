@@ -10,10 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.artivisi.belajar.dao.UserDao;
 import com.artivisi.belajar.domain.User;
+import com.artivisi.belajar.helper.PageHelper;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -22,13 +28,56 @@ import org.springframework.web.bind.support.SessionStatus;
 public class UserController {
 	@Autowired private UserDao userDao;
 	
+        @RequestMapping("/download")
+        public void downloadFile(@RequestParam String nama, HttpServletResponse res) throws Exception {
+            InputStream in = this.getClass().getResourceAsStream("/"+nama+".pdf");
+            
+            if(in == null){
+                res.setStatus(404);
+                return;
+            }
+            
+            res.setContentType("application/pdf");
+            res.setHeader("Content-Disposition", "attachment; filename=unduhan.pdf");
+            
+            OutputStream out = res.getOutputStream();
+            int data;
+            while((data = in.read()) != -1) {
+                out.write(data);
+            }
+            out.flush();
+            out.close();
+            in.close();
+        }
+        
+	@RequestMapping("/config/user/data")
+        @ResponseBody
+        public List<User> dataUser(){
+            return userDao.cariSemuaUser(0, 100, null, null);
+        }
+        
 	@RequestMapping("/config/user/list")
-	public ModelAndView configUserList(@RequestParam (required=false) Integer start, @RequestParam (required=false) Integer rows) {
+	public ModelAndView configUserList(@RequestParam (required=false) Integer page, 
+                @RequestParam (required=false) Integer rows,
+                @RequestParam(required = false) String sort, 
+                @RequestParam(required = false) String dir
+                ) {
 		ModelAndView mm = new ModelAndView();
-		if(start==null) start = 0; if(rows==null) rows = 100;
-		List<User> lUser = userDao.cariSemuaUser(start, rows);
+		if(page==null) page = 1; if(rows==null) rows = 10;
+                
+                Integer start = PageHelper.pageToStart(page, rows);
+                
+		List<User> lUser = userDao.cariSemuaUser(start, rows, sort, dir);
 		mm.addObject("lUser", lUser);
-		mm.addObject("totUser", lUser.size());
+                
+                Long jumlahSemuaUser = userDao.countSemuaUser();
+                Integer jumlahHalaman = (jumlahSemuaUser.intValue() / rows) + 1;
+                
+		mm.addObject("totUser", jumlahSemuaUser);
+		mm.addObject("totPage", jumlahHalaman);
+		mm.addObject("currentPage", page);
+		mm.addObject("currentSort", sort);
+		mm.addObject("currentDir", dir);
 		return mm;
 	}
 	
@@ -58,7 +107,7 @@ public class UserController {
 	}
         
 	@RequestMapping(value = "/config/user/form", method = RequestMethod.POST)
-        public String prosesUserForm(@ModelAttribute @Valid User u, BindingResult errors, SessionStatus status){
+        public String prosesUserForm(@ModelAttribute @Valid User u, BindingResult errors, SessionStatus status, HttpSession session){
             System.out.println("Username : "+u.getUsername());
             System.out.println("Fullname : "+u.getFullname());
             System.out.println("Email : "+u.getEmail());
@@ -69,6 +118,7 @@ public class UserController {
             
             userDao.save(u);
             status.setComplete();
+            session.removeAttribute("titleForm");
             return "redirect:list";
         }
 	

@@ -2,6 +2,20 @@
 insert into m_user (id,username,fullname,email) values ('endy', 'endy', 'Endy Muhardin', 'endy@artivisi.com');
 insert into m_user (id,username,fullname,email) values ('dadang', 'dadang', 'Dadang Iswan', 'dadang@artivisi.com');
 insert into m_user (id,username,fullname,email) values ('adi', 'adi', 'Adi Sulistiono', 'adi@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi1', 'adi1', 'Adi Sulistiono', 'adi1@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi2', 'adi2', 'Adi Sulistiono', 'adi2@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi3', 'adi3', 'Adi Sulistiono', 'adi3@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi4', 'adi4', 'Adi Sulistiono', 'adi4@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi5', 'adi5', 'Adi Sulistiono', 'adi5@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi6', 'adi6', 'Adi Sulistiono', 'adi6@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi7', 'adi7', 'Adi Sulistiono', 'adi7@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi8', 'adi8', 'Adi Sulistiono', 'adi8@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi9', 'adi9', 'Adi Sulistiono', 'adi9@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi0', 'adi0', 'Adi Sulistiono', 'adi0@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi12', 'adi12', 'Adi Sulistiono', 'adi12@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi13', 'adi13', 'Adi Sulistiono', 'adi13@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi14', 'adi14', 'Adi Sulistiono', 'adi14@artivisi.com');
+insert into m_user (id,username,fullname,email) values ('adi15', 'adi15', 'Adi Sulistiono', 'adi15@artivisi.com');
 
 -- sample role
 insert into m_roles(roles_id, role_name) values('r1','host');
