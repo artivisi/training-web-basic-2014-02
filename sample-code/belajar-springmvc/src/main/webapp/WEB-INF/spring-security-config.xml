@@ -15,6 +15,7 @@
             default-target-url='/config/user/list'
             authentication-failure-url="/login?error=true"/>
         <logout logout-success-url="/login" />
+        <csrf />
     </http>
     
     <beans:bean name="bcryptEncoder"
