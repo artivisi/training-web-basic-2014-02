@@ -24,6 +24,7 @@ public class GeneralInfoController {
 		
 		System.out.println("general info total : " + generalinfo.size());
 		mm.addObject("generalInfoList", generalinfo);
+		mm.addObject("totInfo", generalinfo.size());
         return mm;
     }
 	@RequestMapping("config/generalinfo/form")
