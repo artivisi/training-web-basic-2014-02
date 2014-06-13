@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,7 +24,10 @@ public class Roles {
 	 @GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	 @Column(name="roles_id")
 	 private String rolesId;
-	
+
+	 @NotEmpty
+	 @NotNull
+	 @Size(min = 3, max = 20)
 	 @Column(nullable = false, unique = true, name="role_name")	 
 	 private String roleName;	 
 	 

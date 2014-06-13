@@ -19,6 +19,9 @@
 			Total Records : <c:out value="${fn:length(roleslist)}"/>
 		</h3>
 		
+		<div class="form-group">		
+			<a href="form?type=1" class="btn btn-primary btn-sm active" role="button">Add Roles</a>
+		</div>			
 		
 		<table class="table table-striped">
 			<tr>
@@ -34,8 +37,8 @@
 			<tr>
 	    		<td><c:out value="${listVar.rolesId}"/></td>
 	    		<td><c:out value="${listVar.roleName}"/></td>
-	    		<td><a href="#">Edit</a></td>
-	    		<td><a href="#">Delete</a></td>
+	    		<td><a href="form?type=2&id=${listVar.rolesId}"  class="btn btn-success btn-sm active" role="button">Edit</a></td>
+	    		<td><a href="form?type=3&id=${listVar.rolesId}"  class="btn btn-success btn-sm active" role="button">Delete</a></td>
 	    	</tr>   			
     		
 		</c:forEach>

@@ -27,7 +27,12 @@ public class RolesDao {
 	    }
 	    
 	    public Roles cariById(String id){
+	    	
+    	  if(id == null || id.trim().length() < 1) {
+              return null;
+          } else {
 	        return (Roles) sessionFactory.getCurrentSession().get(Roles.class, id);
+          }
 	    }
 	    
 	    public List<Roles> cariSemuaRoles(Integer start, Integer rows){
