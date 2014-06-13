@@ -17,6 +17,9 @@
         <logout logout-success-url="/login" />
     </http>
     
+    <beans:bean name="bcryptEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
     <authentication-manager>
         <authentication-provider>
             <!--
@@ -25,6 +28,7 @@
                 <user name="bob" password="bobspassword" authorities="ROLE_USER" />
             </user-service>
             -->
+            <password-encoder ref="bcryptEncoder"/>
             <jdbc-user-service 
                 data-source-ref="dataSource"
                 users-by-username-query="select u.username, up.user_password as password, true as enabled

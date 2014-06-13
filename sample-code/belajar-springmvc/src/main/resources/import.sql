@@ -49,6 +49,6 @@ insert into user_activity(activity_id, user_id, user_activity, activity_date) va
 insert into user_activity(activity_id, user_id, user_activity, activity_date) values('2', 'adi', 'news', '2014-06-11 18:00:00');
 insert into user_activity(activity_id, user_id, user_activity, activity_date) values('3', 'dadang', 'general_info', '2014-06-22 15:00:00');
 -- sample user password
-insert into m_user_password(user_id,user_password) values ('endy', '123');
+insert into m_user_password(user_id,user_password) values ('endy', '$2a$04$1pQycMK813XqoyN5ga1owORySPexHzFwdNNm0QoGZGMEf8Gcn7D1K');
 insert into m_user_password(user_id,user_password) values ('dadang', '123');
 insert into m_user_password(user_id,user_password) values ('adi', '123');
