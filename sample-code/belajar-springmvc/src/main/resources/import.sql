@@ -20,7 +20,7 @@ insert into m_user (id,username,fullname,email) values ('adi15', 'adi15', 'Adi S
 -- sample role
 insert into m_roles(roles_id, role_name) values('r1','host');
 insert into m_roles(roles_id, role_name) values('r2','administrator');
-insert into m_roles(roles_id, role_name) values('r3','agent');
+insert into m_roles(roles_id, role_name) values('r3','ROLE_USER');
 
 -- sample role user
 insert into m_user_roles(user_id, roles_id) values ('endy','r3');

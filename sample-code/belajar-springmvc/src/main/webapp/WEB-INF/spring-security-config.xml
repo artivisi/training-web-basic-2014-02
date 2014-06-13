@@ -18,10 +18,27 @@
     
     <authentication-manager>
         <authentication-provider>
+            <!--
             <user-service>
                 <user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
                 <user name="bob" password="bobspassword" authorities="ROLE_USER" />
             </user-service>
+            -->
+            <jdbc-user-service 
+                data-source-ref="dataSource"
+                users-by-username-query="select u.username, up.user_password as password, true as enabled
+                                        from m_user u 
+                                        inner join m_user_password up 
+                                        on u.id = up.user_id
+                                        where u.username = ?"
+                authorities-by-username-query="select u.username, r.role_name as authority
+                                        from m_user u
+                                        inner join m_user_roles ur
+                                        on u.id = ur.user_id
+                                        inner join m_roles r
+                                        on ur.roles_id = r.roles_id
+                                        where u.username=?"
+            />
         </authentication-provider>
     </authentication-manager>
     
