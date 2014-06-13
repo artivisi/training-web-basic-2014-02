@@ -16,6 +16,9 @@
 			    <label for="iRoleName">Role Name</label>
 	                    <form:input path="roleName" cssClass="form-control" id="iRoleName"/>
 	                    <form:errors path="roleName" />
+	                    
+	                    <form:hidden path="rolesId" />
+	                    
 			  </div>		  
 		  		  
 		  		<button type="submit" class="btn btn-primary btn-sm">${titleForm}</button>		  
