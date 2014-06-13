@@ -9,8 +9,11 @@
     
     <http>
         <intercept-url pattern="/config/user/**" access="ROLE_USER" />
-        <form-login />
-        <logout />
+        <form-login 
+            login-page='/login' 
+            default-target-url='/config/user/list'
+            authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login" />
     </http>
     
     <authentication-manager>
