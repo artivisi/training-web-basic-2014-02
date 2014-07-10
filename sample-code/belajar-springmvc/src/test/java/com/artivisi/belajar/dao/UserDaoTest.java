@@ -42,14 +42,14 @@ public class UserDaoTest {
     
     @Test
     public void testCariSemua(){
-        List<User> hasil = userDao.cariSemuaUser(0, 100);
+        List<User> hasil = userDao.cariSemuaUser(0, 100, null, null);
         System.out.println("Hasil : "+hasil.size());
         Assert.assertTrue("Hasil query semua user tidak sesuai dengan isi database", hasil.size() == 3);
         User u = hasil.get(0);
         Assert.assertEquals("adi", u.getUsername());
         
         
-        Assert.assertTrue(userDao.cariSemuaUser(0, 1).size() == 1);
+        Assert.assertTrue(userDao.cariSemuaUser(0, 1, null, null).size() == 1);
     }
     
     @Test
